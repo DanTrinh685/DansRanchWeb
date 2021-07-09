@@ -22,7 +22,7 @@
 <% results.forEach(function(image) { %>
 
     <figure class = 'item'><img src="data:image/<%=image.img.contentType%>;base64,
-    <%=image.img.data.toString('base64')%>"><figcaption class = 'caption'></br>$<%= image.price %></figcaption></figure>
+    <%=image.img.data.toString('base64')%>"><figcaption class = 'caption'></br></figcaption></figure>
 
 <% }) %>
 
