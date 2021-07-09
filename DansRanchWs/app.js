@@ -7,8 +7,8 @@ var app = express();
 MongoClient.connect("mongodb+srv://admin:dantrinh@dansranch.bga8u.mongodb.net/Inventory?retryWrites=true&w=majority",{useUnifiedTopology:true, useNewUrlParser:true, useCreateIndex:true}, function(err, database) {
     if (err) return console.log(err);
     db = database.db("Inventory");
-    app.listen(80, function(){
-        console.log("listening to port 80")
+    app.listen(3000, function(){
+        console.log("listening to port 3000")
     })
 })
 app.get("/", function (req, res) {
