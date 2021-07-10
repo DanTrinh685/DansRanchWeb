@@ -5,12 +5,18 @@
     <div id="myLinks">
       <ul>
           <li><a class = 'active' href="/home">Home</a></li>
-          <li><a href="/sleeves">Collectibles</a></li>
+          <li><a href="/sleeves">Sleeves</a></li>
     </ul>
     </div>
   </div>
 
  <br></br> 
 <h1>Welcome to Dan's Ranch</h1>
+<% home.forEach(function(image) { %>
+
+  <img src="data:image/<%=image.img.contentType%>;base64,
+  <%=image.img.data.toString('base64')%>" class = "logo">
+
+  <% }) %>
 
 <%- include ('../_partial/_footer'); -%>
