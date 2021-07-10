@@ -9,19 +9,25 @@ MongoClient.connect("mongodb+srv://admin:dantrinh@dansranch.bga8u.mongodb.net/In
     if (err) return console.log(err);
     db = database.db("Inventory");
 })
-app.get("/", function (req, res) {
-    // console.log("hello I'm on the start page");
-    res.render("home/home");
- });
 
- app.get("/home", function (req, res) {
-    // console.log("hello I'm on the start page");
-    res.render("home/home");
- });
+app.get("/", function(req,res){
+    var cursor = db.collection("images").find({name:"Logo"}).toArray(function(err, home){
+        console.log(home);
+        res.render("home/home", {home:home})
+    });
+    console.log(cursor); 
+});
 
+app.get("/home", function(req,res){
+    var cursor = db.collection("images").find({name:"Logo"}).toArray(function(err, home){
+        console.log(home);
+        res.render("home/home", {home:home})
+    });
+    console.log(cursor); 
+});
 
 app.get("/sleeves", function(req,res){
-    var cursor = db.collection("images").find({}).toArray(function(err, results){
+    var cursor = db.collection("images").find({name:{$ne: "Logo"}}).toArray(function(err, results){
         console.log(results);
         res.render("sleeves/sleeves", {results:results})
     });
@@ -30,6 +36,7 @@ app.get("/sleeves", function(req,res){
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
 
 app.set('port', process.env.PORT || 3000);
 
